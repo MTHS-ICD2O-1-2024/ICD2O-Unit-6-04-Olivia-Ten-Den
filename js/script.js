@@ -11,18 +11,17 @@ window.onload = function () {
 
   const params = new URLSearchParams(document.location.search)
 
-  // 
-  
-  if (params.get("radius") == null) {
-    const radius = 0
-  } else {
-    const radius = params.get("radius")
+  //
+  let radius = params.get("radius")
+  if (radius == null) {
+    radius = 0
   }
 
   // process
-  const volume = 4 / 3 * π * radius ** 3
+  const notRoundedVolume = 4 / 3 * Math.PI * radius ** 3
+  const roundedVolume = Math.round(notRoundedVolume * 100) /100
 
   // output
   document.getElementById("radius").innerHTML = "<p>The radius = " + radius + " cm</p>"
-  document.getElementById("volume").innerHTML = "<p>The volume is: " + volume + " cm³</p>"
+  document.getElementById("volume").innerHTML = "<p>The volume is: " + roundedVolume + " cm³</p>"
 }

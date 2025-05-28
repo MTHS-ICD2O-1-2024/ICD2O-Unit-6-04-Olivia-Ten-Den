@@ -7,28 +7,22 @@
 "use strict"
 
 window.onload = function () {
-  // this calculates volume of a pyramid
+  // this calculates volume of a sphere
 
   const params = new URLSearchParams(document.location.search)
 
-  // input
-  const aBase = params.get("aBase")
-  const bBase = params.get("bBase")
-  const height = params.get("height")
-  console.log(aBase)
+  // 
+  
+  if (params.get("radius") == null) {
+    const radius = 0
+  } else {
+    const radius = params.get("radius")
+  }
 
   // process
-  const area = ((aBase + bBase) / 2) * height
-  const dimensions =
-    "<ul>\n<li>a base = " +
-    aBase +
-    "</li>\n<li>b base = " +
-    bBase +
-    "</li>\n<li>height = " +
-    height +
-    "</li>\n</ul>"
+  const volume = 4 / 3 * π * radius ** 3
 
   // output
-  document.getElementById("dimensions").innerHTML = dimensions
-  document.getElementById("area").innerHTML = "Area is: " + area + " mm²"
+  document.getElementById("radius").innerHTML = "<p>The radius = " + radius + " cm</p>"
+  document.getElementById("volume").innerHTML = "<p>The volume is: " + volume + " cm³</p>"
 }
